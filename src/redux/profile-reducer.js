@@ -1,8 +1,9 @@
-import {profielAPI} from "../api/api"
+import {profileAPI} from "../api/api"
 const ADD_POST = "profile/ADD-POST";
 const SET_USERS_PROFILE = "profile/SET-USERS-PROFILE"
 const SET_STATUS = "profile/SET-STATUS"
 const DELETE_POST = "profile/DELETE-POST"
+const SAVE_PHOTO = "profile/SAVE-PHOTO"
 
 let initialState = {
     posts: [
@@ -45,6 +46,12 @@ const profileReducer = (state = initialState, action) => {
                 posts: state.posts.filter(p => p.id != action.id)
             }
         }
+        case SAVE_PHOTO: {
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos}
+            }
+        }
         default:
             return state;
     }
@@ -78,25 +85,42 @@ export const setStatus = (status) => {
     }
 }
 
+export const savePhotoSuccess = (photos) => {
+    return {
+        type: SAVE_PHOTO,
+        photos
+    }
+}
+
+
 export const setUserProfileThunk = (id) => {
     return async (dispatch) => {
-        let data = await profielAPI.getProfile(id);
+        let data = await profileAPI.getProfile(id);
         dispatch(setUsersProfile(data));
     }
 }
 
 export const getStatusThunk = (id) => {
     return async (dispatch) => {
-        let data = await profielAPI.getStatus(id);
+        let data = await profileAPI.getStatus(id);
         dispatch(setStatus(data));
     }
 }
 
 export const updateStatusThunk = (status) => {
     return async (dispatch) => {
-        let data = await profielAPI.updateStatus(status);
+        let data = await profileAPI.updateStatus(status);
         if(data.resultCode === 0) {
             dispatch(setStatus(status));
+        }
+    }
+}
+
+export const savePhotoThunk = (file) => {
+    return async (dispatch) => {
+        let data = await profileAPI.savePhoto(file);
+        if(data.resultCode === 0) {
+            dispatch(savePhotoSuccess(data.data.photos));
         }
     }
 }

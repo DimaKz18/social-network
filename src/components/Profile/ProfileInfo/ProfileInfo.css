@@ -10,3 +10,9 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(3, 228, 52);
 }
+
+.profile-info__photo-link {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}

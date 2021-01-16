@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "./components/NavBar/NavBar";
-import { BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import "./App.css";
 import {withSuspense} from "./components/hoc/withSuspense"
 import UsersContainer from "./components/Users/UsersContainer";
@@ -53,9 +53,9 @@ let AppContainer = compose(
 
 const MainApp = (props) => {
   return <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       <AppContainer />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>;
 }
 
