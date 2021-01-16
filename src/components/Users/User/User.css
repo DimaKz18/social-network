@@ -1,0 +1,48 @@
+.user {
+    display: flex;
+    flex-direction: row;
+}
+
+.user__logo {
+    margin-top: 20px;
+    width: 70px;
+    text-align: center;
+}
+
+.user__logo button {
+    margin-top: 5px;
+    width: 90%;
+    border-radius: 10px;
+    border: 1px solid orangered;
+    color: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 25px;
+}
+
+.user__logo img {
+    padding-top: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}
+
+.user__info {
+    margin-top: 20px;
+    margin-left: 50px;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 500px;
+}
+
+.user__info-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user__info-item p {
+    font-family: 'Franklin Gothic Regular', 'Arial Narrow', Arial, sans-serif;
+    font-size: 17px;
+    color: rgb(83, 82, 82);
+}

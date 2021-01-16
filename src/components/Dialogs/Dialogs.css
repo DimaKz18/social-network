@@ -1,0 +1,16 @@
+.dialogs-content {
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background: rgb(255,45,85);
+    background: linear-gradient(180deg, rgba(255,45,85,1) 34%, rgba(255,255,255,1) 100%);
+}
+
+.messages {
+    padding-left: 150px;
+}
+

@@ -1,0 +1,10 @@
+.dialog__text {
+    font-size: 16px;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(73, 71, 71);
+}
+
+.dialog__text:hover {
+    color: white;
+}

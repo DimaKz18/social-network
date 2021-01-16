@@ -1,0 +1,22 @@
+.users-content {
+    padding-top: 10px;
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 100%;
+    background: rgb(255,45,85);
+    background: linear-gradient(180deg, rgba(255,45,85,1) 34%, rgba(255,255,255,1) 100%);
+}
+
+.selected-page {
+    font-weight: 700;
+}
+
+.users-content div span {
+    text-decoration: none;
+    margin: 7px;
+}
+
+.users-content div span:hover {
+    cursor: pointer;
+}
