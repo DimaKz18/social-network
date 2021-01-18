@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import {Redirect, withRouter} from 'react-router-dom'
 import Profile from './Profile';
-import {setUserProfileThunk, getStatusThunk, updateStatusThunk, savePhotoThunk} from '../../redux/profile-reducer'
+import {setUserProfileThunk, getStatusThunk, updateStatusThunk, savePhotoThunk, saveProfileThunk} from '../../redux/profile-reducer'
 import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { compose } from 'redux';
 
@@ -25,7 +25,7 @@ class ProfileContainer extends React.Component {
     }
     render() {
         return  (
-            <Profile {...this.props} savePhoto={this.props.savePhotoThunk} isOwner={!this.props.match.params.userId} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatusThunk}/>
+            <Profile {...this.props} saveProfile={this.props.saveProfileThunk} savePhoto={this.props.savePhotoThunk} isOwner={!this.props.match.params.userId} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatusThunk}/>
         )   
     }
         
@@ -41,7 +41,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {setUserProfileThunk, getStatusThunk, updateStatusThunk, savePhotoThunk}),
+    connect(mapStateToProps, {setUserProfileThunk, getStatusThunk, updateStatusThunk, savePhotoThunk, saveProfileThunk}),
     withRouter,
     withAuthRedirect
 )(ProfileContainer)

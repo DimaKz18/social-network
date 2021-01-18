@@ -9,7 +9,7 @@ import { Textarea } from '../../FormControls/FormControls';
 const maxLength10 = maxLengthCreator(10);
 
 const MyPosts = React.memo((props) => {
-  let postsElements = props.profilePage.posts.map( p => <Post msg={p.msg} likes={p.likes} img={p.img}/>)
+  let postsElements = props.profilePage.posts.map( p => <Post key={p.id} msg={p.msg} likes={p.likes} img={p.img}/>)
 
   let newPost = React.createRef();
 

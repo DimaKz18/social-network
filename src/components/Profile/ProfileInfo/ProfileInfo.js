@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Preloader from '../../Preloader/Preloader';
 import ProfileStatusHook from './ProfileStatus'
+import ProfileData from './ProfileData'
 import './ProfileInfo.css'
+import ProfileDataForm from './ProfileDataForm';
 
 const ProfileInfo = (props) => {
+    let [editMode, setEditMode] = useState(false);
+
+    const activateEditMode = () => {
+        setEditMode(true);
+    }
+
+    const deactivateEditMode = () => {
+        setEditMode(false);
+    }
+
     if(!props.profile) {
         return <Preloader />
     }
@@ -11,6 +23,13 @@ const ProfileInfo = (props) => {
         if(e.target.files.length) {
             props.savePhoto(e.target.files[0]);
         }
+    }
+    const onSubmit = (formData) => {
+        props.saveProfile(formData).then(
+            () => {
+                deactivateEditMode();
+            }
+        );
     }
     return (
         <div className="profile-info">
@@ -20,11 +39,8 @@ const ProfileInfo = (props) => {
                 {props.isOwner && <input type="file" onChange={onSelectedFile}/>}
             </div>
             <div className="profile-info__text">
-                <p>Full name: {props.profile.fullName}</p>
-                <p>About me: {props.profile.aboutMe}</p>
-                <p>Status: {props.profile.lookingForAJobDescription}</p>
-                <p>Facebook: {props.profile.contacts.facebook}</p>
-                <p>Twitter: {props.profile.contacts.twitter}</p>
+                {editMode ? <ProfileDataForm initialValues={props.profile} profile={props.profile} onSubmit={onSubmit}/> : <ProfileData profile={props.profile} isOwner={props.isOwner} activateEditMode={activateEditMode}/>}
+                
             </div>
         </div>
     )
