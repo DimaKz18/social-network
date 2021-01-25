@@ -109,9 +109,14 @@ export const getStatusThunk = (id) => {
 
 export const updateStatusThunk = (status) => {
     return async (dispatch) => {
-        let data = await profileAPI.updateStatus(status);
-        if(data.resultCode === 0) {
-            dispatch(setStatus(status));
+        try {
+            let data = await profileAPI.updateStatus(status);
+            if(data.resultCode === 0) {
+                dispatch(setStatus(status));
+            }
+        }
+        catch(error) {
+            alert("Some error occused");
         }
     }
 }

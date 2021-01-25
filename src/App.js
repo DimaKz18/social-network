@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "./components/NavBar/NavBar";
-import { HashRouter, Route } from "react-router-dom";
+import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import {withSuspense} from "./components/hoc/withSuspense"
 import UsersContainer from "./components/Users/UsersContainer";
@@ -27,13 +27,17 @@ class App extends React.Component {
           <HeaderContainer />
           <div className="app-wrapper">
             <NavBar />
-            <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
-            <Route
-              path="/profile/:userId?"
-              render={withSuspense(ProfileContainer)}
-            />
-            <Route path="/users" render={() => <UsersContainer />} />
-            <Route path="/login" render={() => <Login />} />
+            <Switch >
+              <Route exact path="/" render={() => <Redirect to="/profile"/>}/>
+              <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
+              <Route
+                path="/profile/:userId?"
+                render={withSuspense(ProfileContainer)}
+              />
+              <Route path="/users" render={() => <UsersContainer />} />
+              <Route path="/login" render={() => <Login />} />
+              <Route path="*" render={() => <div>404 Not found</div>} />
+            </Switch>
           </div>
         </div>
     );
