@@ -1,7 +1,6 @@
 import React from "react";
 import NavBar from "./components/NavBar/NavBar";
 import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
-import "./App.css";
 import {withSuspense} from "./components/hoc/withSuspense"
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -12,6 +11,8 @@ import { compose } from 'redux';
 import Preloader from "./components/Preloader/Preloader";
 import {withRouter} from 'react-router-dom'
 import store from "./redux/redux-store";
+import NotesContainer from "./components/Notes/NotesContainer";
+import "./App.css";
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"));
 class App extends React.Component {
@@ -35,6 +36,7 @@ class App extends React.Component {
                 render={withSuspense(ProfileContainer)}
               />
               <Route path="/users" render={() => <UsersContainer />} />
+              <Route path="/notes" render={() => <NotesContainer />} />
               <Route path="/login" render={() => <Login />} />
               <Route path="*" render={() => <div>404 Not found</div>} />
             </Switch>

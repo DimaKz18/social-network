@@ -1,0 +1,44 @@
+.login-content {
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: rgb(255,45,85);
+    background: linear-gradient(180deg, rgba(255,45,85,1) 34%, rgba(255,255,255,1) 100%);
+}
+
+.login-form-input {
+    padding: 7px;
+    margin-bottom: 10px;
+    width: 250px;
+    border-radius: 10px;
+    border: 0;
+    outline: none;
+}
+
+.login-form-checkbox {
+    width: 15px;
+    height: 15px;
+}
+
+.login-form-text {
+    margin-top: -15px;
+    padding-left: 10px;
+}
+
+.login-form-btn {
+    padding: 5px 15px;
+    margin-top: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1px solid red;
+    background-color: white;
+}
+
+.login-form-btn:hover {
+    border-color: black;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
