@@ -1,6 +1,6 @@
 import React from 'react'
 import Note from "./Note/Note";
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, reset } from 'redux-form'
 import { maxLengthCreator, requiredField } from '../../validators/validators';
 import { Textarea } from '../FormControls/FormControls';
 import "./Notes.css"
@@ -11,8 +11,9 @@ const maxLength50 = maxLengthCreator(50)
 const Notes = (props) => {
     let notesElements = props.notes.notes.map(n => <Note key={n.id} note={n.noteMsg} id={n.id} deleteNote={props.deleteNote} updateNote={props.updateNote}/>)
 
-    const onAddNote = (values) => {
+    const onAddNote = (values, dispatch) => {
         props.addNote(values.newNote)
+        dispatch(reset('addNote'))
     }
 
     return (

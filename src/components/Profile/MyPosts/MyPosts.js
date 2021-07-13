@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post/Post';
 import './MyPosts.css'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, reset } from 'redux-form'
 import { maxLengthCreator, requiredField } from '../../../validators/validators';
 import { Textarea } from '../../FormControls/FormControls';
 
@@ -13,8 +13,9 @@ const MyPosts = React.memo((props) => {
 
   let newPost = React.createRef();
 
-  let onAddPost = (values) => {
+  let onAddPost = (values, dispatch) => {
     props.addPost(values.newPost);
+    dispatch(reset('addPost'))
   }
   return (
     <div className="my-posts">

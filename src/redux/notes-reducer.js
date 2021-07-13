@@ -40,8 +40,8 @@ const notesReducer = (state = initialState, action) => {
 
 export const addNote = (newNote) => {
     return {
-      type: ADD_NOTE,
-      newNote
+        type: ADD_NOTE,
+        newNote
     }
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import "./Dialogs.css";
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, reset } from 'redux-form'
 import { maxLengthCreator, requiredField } from '../../validators/validators';
 import { Textarea } from '../FormControls/FormControls';
 
@@ -12,8 +12,9 @@ const Dialogs = (props) => {
   let dialogsElements = props.dialogsPage.dialogs.map( d => <Dialog user={d.dialog} id={d.id} />);
   let messagesElements = props.dialogsPage.messages.map( m => <Message msg={m.message} id={m.id} />);
 
-  let onAddDialog = (values) => {
+  let onAddDialog = (values, dispatch) => {
     props.addDialog(values.newMessage);
+    dispatch(reset('addMessage'))
   }
 
   return (
